@@ -1,8 +1,12 @@
 import React from "react";
+import  launchModal  from "../../utils/launchModal";
 
 const Country = ({ item }) => {
+  const handleDetails = () => {    
+    launchModal(item)
+  }
   return (
-    <article className="card">
+    <article className="card" onClick={handleDetails}>
       <div className="card-image">
         <img src={item.flag.large} alt={item.name} />
       </div>

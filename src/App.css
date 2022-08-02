@@ -211,3 +211,54 @@ button {
   color: #fff;
   cursor: pointer;
 }
+
+/* Modal styles config */
+.modalContainer {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 30%;
+  height: 50%;
+  animation: fadeIn 0.4s ease-in;
+}
+.modalHeader {
+  background-color: antiquewhite;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
+}

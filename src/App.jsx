@@ -4,6 +4,7 @@ import Country from "./components/Country";
 import Search from "./components/Search";
 import "./App.css";
 import Filter from "./components/Filter";
+import LoadNext from "./components/LoadNext";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -11,8 +12,8 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const [query, setQuery] = useState(""); //null?
   const [filter, setFilter] = useState(""); //null?
+  const [paginate, setPaginate] = useState(12);
 
-  // item.region.includes())
   function search(items) {
     return items.filter(
       (item) =>
@@ -21,6 +22,10 @@ function App() {
           item[parameter].toString().toLowerCase().includes(query.toLowerCase())
         )
     );
+  }
+
+  function load_next() {
+    setPaginate((prevState) => prevState + 12);
   }
 
   useEffect(() => {
@@ -59,10 +64,13 @@ function App() {
         <Filter filter_items={filter_items} setFilter={setFilter} />
         <Search setQuery={setQuery} />
         <section className="card-grid">
-          {search(data).map((item) => (
+          {search(data)
+          .slice(0, paginate)
+          .map((item) => (
             <Country key={item.alpha3Code} item={item} />
           ))}
         </section>
+        <LoadNext load_next={load_next}/>
       </div>
     );
   }
